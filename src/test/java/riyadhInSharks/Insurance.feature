@@ -9,12 +9,20 @@ Feature: Insurance API Automation
     And print response
     * def token = response.token
     And print token
-    
-   @getAccount
+
+  @getAccount
   Scenario: GetAccount
     Given headers {Authorization: '#("Bearer " + token)'}
     And path 'api/accounts/get-account'
     * param primaryPersonId = 5736
-    When method get 
+    When method get
     Then status 200
-    And print response 
+    And print response
+
+  @gitAllAccount
+  Scenario: Get All Account
+    Given headers {Authorization: '#("Bearer " + token)'}
+    * path 'api/accounts/get-all-accounts'
+    When method get
+    Then status 200
+    And print response
