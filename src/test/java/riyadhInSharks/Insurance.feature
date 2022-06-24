@@ -26,3 +26,12 @@ Feature: Insurance API Automation
     When method get
     Then status 200
     And print response
+
+  @getPrimaryAccount
+  Scenario: Get Primary Account
+    Given headers {Authorization: '#("Bearer " + token)'}
+    And path 'api/accounts/get-primary-account'
+    And param primaryPersonId = 5736
+    When method get
+    Then status 200
+    And print response
